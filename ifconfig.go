@@ -4,7 +4,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	//"strings"
 )
 
 func main() {
@@ -14,9 +13,5 @@ func main() {
 }
 
 func ifconfig(w http.ResponseWriter, r *http.Request) {
-	for k, v := range r.Header {
-		if len(v) > 0 {
-            w.Write([]byte(k+":"+v[0]+"\n"))
-		}
-	}
+	w.Write([]byte(r.Header['X-Forwarded-For'][0]))
 }

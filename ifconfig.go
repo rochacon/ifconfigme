@@ -13,5 +13,5 @@ func main() {
 }
 
 func ifconfig(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte(r.Header['X-Forwarded-For'][0]))
+	w.Write([]byte(r.Header["X-Forwarded-For"][0]))
 }

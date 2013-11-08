@@ -1,9 +1,11 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -13,5 +15,10 @@ func main() {
 }
 
 func ifconfig(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte(r.Header["X-Forwarded-For"][0]))
+	xff := r.Header["X-Forwarded-For"]
+	if len(xff) > 0 {
+		io.WriteString(w, xff[0])
+	} else {
+		io.WriteString(w, strings.Split(r.RemoteAddr, ":")[0])
+	}
 }

@@ -1,4 +1,4 @@
-FROM rochacon/golang
+FROM golang:1.3
 ENV GOPATH /app
 ADD . /app/src/github.com/rochacon/ifconfigme
 RUN go install -v github.com/rochacon/ifconfigme

@@ -1,9 +1,3 @@
-FROM golang:1.3
-ENV GOPATH /app
-ADD . /app/src/github.com/rochacon/ifconfigme
-RUN go install github.com/rochacon/ifconfigme
-WORKDIR /app
+FROM golang:1.4.1-onbuild
 ENV PORT 8080
 EXPOSE 8080
-USER nobody
-CMD /app/bin/ifconfigme

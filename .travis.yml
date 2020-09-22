@@ -1,6 +1,6 @@
 language: go
 go:
-  - 1.14.2
+  - 1.15.2
   - tip
 script:
-  - go test
+  - go test -cover -race
